@@ -48,7 +48,7 @@ end
 
 ```ruby
 users = User.all
-UserCsv.new(users).build(<csv options>)
+UserCsv.new(users, csv_options).build
 ```
 
 Csv opions could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
