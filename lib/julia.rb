@@ -1,5 +1,5 @@
 require "julia/version"
+require 'julia/builder'
 
 module Julia
-  # Your code goes here...
 end
