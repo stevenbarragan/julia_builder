@@ -1,4 +1,5 @@
 # Julia Builder
+[![Build Status](https://travis-ci.org/stevenbarragan/julia_builder.svg?branch=master)](https://travis-ci.org/stevenbarragan/julia_builder)
 
 Julia helps you out to create flexible builders to easily export your queries to csv (for now).
 
