@@ -42,4 +42,15 @@ RSpec.describe Julia::Builder do
 
     it { expect(subject.build).to eq "Full name\nSteven Barragan\n" }
   end
+
+  context 'with csv options' do
+    let(:csv_options){ {col_sep: ','} }
+    let(:subject){ Test1.new(query, csv_options) }
+
+    it 'pass csv options' do
+      expect(CSV).to receive(:generate).with csv_options
+
+      subject.build
+    end
+  end
 end

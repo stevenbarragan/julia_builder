@@ -2,10 +2,10 @@ require 'csv'
 
 module Julia
   class Builder
-    attr_reader :collection
+    attr_reader :collection, :csv_options
 
-    def initialize(collection)
-      @collection = collection
+    def initialize(collection, csv_options = Hash.new)
+      @collection, @csv_options = collection, csv_options
     end
 
     def self.columns
@@ -17,7 +17,7 @@ module Julia
     end
 
     def build
-      CSV.generate do |csv|
+      CSV.generate(csv_options) do |csv|
         csv << columns.keys
 
         collection.each do |record|
