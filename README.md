@@ -1,8 +1,6 @@
-# Julia
+# Julia Builder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/julia`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Julia helps you out to create flexible builders to easily export your queries to csv (for now).
 
 ## Installation
 
@@ -20,9 +18,41 @@ Or install it yourself as:
 
     $ gem install julia_builder
 
+For non rails projects
+
+```ruby
+require 'julia'
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+1.- Create your own builder class, inherit from `Julia::Builder` and configure your csv columns.
+
+```ruby
+class UserCsv < Julia::Builder
+  # specify column's header and value
+  column 'Birthday', :dob
+  # header equals 'Birthday' and the value will be on `user.dbo`
+
+  # when header and value are the same, no need to duplicate it.
+  column :name
+  # header equals 'name', value will be `user.name`
+
+  # when you need to do some extra work on the value you can pass a proc.
+  column 'Full name', -> { "#{ name.capitalize } #{ last_name.capitalize }" }
+end
+```
+
+2.- Now you can use your builder to generate your csv out of a query like:
+
+```ruby
+users = User.all
+UserCsv.new(users).build(<csv options>)
+```
+
+Csv opions could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html) understands, but they are optional.
+
+3.- Enjoy
 
 ## Development
 
@@ -38,4 +68,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/steven
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
 
