@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@steven.mx"]
 
   spec.summary       = %q{Export your queries easily and fast}
-  spec.description   = %q{Create flexible builders to export your queries easy than ever}
+  spec.description   = %q{Create flexible builders to export your queries easier than ever}
   spec.homepage      = "https://github.com/stevenbarragan/julia_builder"
   spec.license       = "MIT"
 

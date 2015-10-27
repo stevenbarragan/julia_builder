@@ -48,10 +48,14 @@ end
 
 ```ruby
 users = User.all
-UserCsv.new(users, csv_options).build
+UserCsv.new(users).build
+
+# or
+
+UserCsv.new(users, <csv options>).build
 ```
 
-Csv opions could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
+Csv options could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
 
 3.- Enjoy
 
@@ -63,7 +67,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/stevenbarragan/julia_builder. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/stevenbarragan/julia_builder/issues. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org/) code of conduct.
 
 
 ## License
