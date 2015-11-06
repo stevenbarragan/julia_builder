@@ -27,37 +27,37 @@ require 'julia'
 
 ## Usage
 
-1.- Create your own builder class, inherit from `Julia::Builder` and configure your csv columns.
+1. Create your own builder class, inherit from `Julia::Builder` and configure your csv columns.
 
-```ruby
-class UserCsv < Julia::Builder
-  # specify column's header and value
-  column 'Birthday', :dob
-  # header equals 'Birthday' and the value will be on `user.dbo`
+    ```ruby
+    class UserCsv < Julia::Builder
+      # specify column's header and value
+      column 'Birthday', :dob
+      # header equals 'Birthday' and the value will be on `user.dbo`
 
-  # when header and value are the same, no need to duplicate it.
-  column :name
-  # header equals 'name', value will be `user.name`
+      # when header and value are the same, no need to duplicate it.
+      column :name
+      # header equals 'name', value will be `user.name`
 
-  # when you need to do some extra work on the value you can pass a proc.
-  column 'Full name', -> { "#{ name.capitalize } #{ last_name.capitalize }" }
-end
-```
+      # when you need to do some extra work on the value you can pass a proc.
+      column 'Full name', -> { "#{ name.capitalize } #{ last_name.capitalize }" }
+    end
+    ```
 
-2.- Now you can use your builder to generate your csv out of a query like:
+2. Now you can use your builder to generate your csv out of a query like:
 
-```ruby
-users = User.all
-UserCsv.new(users).build
+    ```ruby
+    users = User.all
+    UserCsv.new(users).build
 
-# or
+    # or
 
-UserCsv.new(users, <csv options>).build
-```
+    UserCsv.new(users, <csv options>).build
+    ```
 
-Csv options could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
+    Csv options could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
 
-3.- Enjoy
+3. Enjoy
 
 ## Development
 
@@ -73,5 +73,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/steven
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
 
