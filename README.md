@@ -41,6 +41,11 @@ require 'julia'
 
       # when you need to do some extra work on the value you can pass a proc.
       column 'Full name', -> { "#{ name.capitalize } #{ last_name.capitalize }" }
+
+      # or you can pass a block
+      column 'Type' do |user|
+        user.class.name
+      end
     end
     ```
 
