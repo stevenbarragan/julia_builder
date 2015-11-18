@@ -53,4 +53,16 @@ RSpec.describe Julia::Builder do
       subject.build
     end
   end
+
+  context 'given a block' do
+    class Test < described_class
+      column 'Capital name' do |user|
+        user.name.capitalize
+      end
+    end
+
+    let(:subject){ Test.new(query) }
+
+    it { expect(subject.build).to eq "Capital name\nSteven\n" }
+  end
 end
