@@ -8,12 +8,12 @@ module Julia
       @collection, @csv_options = collection, csv_options
     end
 
-    def self.columns
-      @columns ||= {}
-    end
-
     def self.column(keyname, action = nil, &block)
       self.columns[keyname] = Action.new(keyname, action, &block)
+    end
+
+    def self.columns
+      @columns ||= {}
     end
 
     def build

@@ -64,4 +64,21 @@ RSpec.describe Julia::Builder do
 
     it { expect(subject.build).to eq "Capital name\nSteven\n" }
   end
+
+  describe '.column' do
+    let(:block) { ->{ name } }
+
+    it 'creates an action' do
+      described_class.column(:key, :value, &block)
+
+      columns = described_class.columns
+      expect(columns).to be_include :key
+
+      action = columns[:key]
+
+      expect(action.key).to eq :key
+      expect(action.action).to eq :value
+      expect(action.block).to eq block
+    end
+  end
 end
