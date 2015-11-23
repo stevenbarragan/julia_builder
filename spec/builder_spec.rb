@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'ostruct'
 
 RSpec.describe Julia::Builder do
   let(:dob){ Time.now }

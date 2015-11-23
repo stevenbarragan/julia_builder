@@ -2,7 +2,7 @@ module Julia
   class Action
     attr_reader :key, :action, :block
 
-    def initialize(key, action, &block)
+    def initialize(key, action = nil, &block)
       @key    = key
       @action = action
       @block  = block
