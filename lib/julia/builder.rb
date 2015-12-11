@@ -28,6 +28,10 @@ module Julia
       end
     end
 
+    def self.build(collection, csv_options = Hash.new)
+      new(collection, csv_options).build
+    end
+
     protected
 
     def columns

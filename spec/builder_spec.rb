@@ -81,4 +81,15 @@ RSpec.describe Julia::Builder do
       expect(action.block).to eq block
     end
   end
+
+  describe '.build' do
+    let(:builder){ double('builder') }
+
+    it 'creates a new intance and calls build' do
+      expect(described_class).to receive(:new).with(query, {}).and_return builder
+      expect(builder).to receive(:build)
+
+      Test1.build(query)
+    end
+  end
 end

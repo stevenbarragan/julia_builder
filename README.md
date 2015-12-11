@@ -53,11 +53,11 @@ require 'julia'
 
     ```ruby
     users = User.all
-    UserCsv.new(users).build
+    UserCsv.build(users)
 
     # or
 
-    UserCsv.new(users, <csv options>).build
+    UserCsv.build(users, <csv options>)
     ```
 
     Csv options could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.
