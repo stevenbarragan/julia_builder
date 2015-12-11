@@ -1,5 +1,6 @@
 # Julia Builder
 [![Build Status](https://travis-ci.org/stevenbarragan/julia_builder.svg?branch=master)](https://travis-ci.org/stevenbarragan/julia_builder)
+[![Test Coverage](https://codeclimate.com/github/stevenbarragan/julia_builder/badges/coverage.svg)](https://codeclimate.com/github/stevenbarragan/julia_builder/coverage)
 
 Julia helps you out to create flexible builders to easily export your queries to csv (for now).
 
