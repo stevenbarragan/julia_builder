@@ -1,4 +1,5 @@
 # Julia Builder
+[![Gem Version](https://badge.fury.io/rb/julia_builder.svg)](https://badge.fury.io/rb/julia_builder)
 [![Build Status](https://travis-ci.org/stevenbarragan/julia_builder.svg?branch=master)](https://travis-ci.org/stevenbarragan/julia_builder)
 [![Test Coverage](https://codeclimate.com/github/stevenbarragan/julia_builder/badges/coverage.svg)](https://codeclimate.com/github/stevenbarragan/julia_builder/coverage)
 
