@@ -4,5 +4,5 @@ require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
 require 'ostruct'
-require 'pry-byebug'
+require 'pry'
 require 'julia'
