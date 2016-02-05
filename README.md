@@ -42,6 +42,9 @@ require 'julia'
       column :name
       # header equals 'name', value will be `user.name`
 
+      # specify many columns at once
+      columns :name, :lastname, :dob
+
       # when you need to do some extra work on the value you can pass a proc.
       column 'Full name', -> { "#{ name.capitalize } #{ last_name.capitalize }" }
 
