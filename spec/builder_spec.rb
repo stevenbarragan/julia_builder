@@ -71,7 +71,7 @@ RSpec.describe Julia::Builder do
     it 'creates an action' do
       described_class.column(:key, :value, &block)
 
-      columns = described_class.columns
+      columns = described_class.columns_config
       expect(columns).to be_include :key
 
       action = columns[:key]
@@ -79,6 +79,15 @@ RSpec.describe Julia::Builder do
       expect(action.key).to eq :key
       expect(action.action).to eq :value
       expect(action.block).to eq block
+    end
+  end
+
+  describe '.columns' do
+    it 'set up each column' do
+      expect(described_class).to receive(:column).with :name
+      expect(described_class).to receive(:column).with :lastname
+
+      described_class.columns(:name, :lastname)
     end
   end
 

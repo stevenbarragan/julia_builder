@@ -9,19 +9,25 @@ module Julia
     end
 
     def self.column(keyname, action = nil, &block)
-      self.columns[keyname] = Action.new(keyname, action, &block)
+      columns_config[keyname] = Action.new(keyname, action, &block)
     end
 
-    def self.columns
-      @columns ||= {}
+    def self.columns(*args)
+      args.each do |key|
+        column(key)
+      end
+    end
+
+    def self.columns_config
+      @columns_config ||= {}
     end
 
     def build
       CSV.generate(csv_options) do |csv|
-        csv << columns.keys
+        csv << columns_config.keys
 
         collection.each do |record|
-          csv << columns.values.map do |action|
+          csv << columns_config.values.map do |action|
             action.get_value(record)
           end
         end
@@ -34,8 +40,8 @@ module Julia
 
     protected
 
-    def columns
-      self.class.columns
+    def columns_config
+      self.class.columns_config
     end
   end
 end
