@@ -28,7 +28,7 @@ module Julia
 
         collection.each do |record|
           csv << columns_config.values.map do |action|
-            action.get_value(record)
+            action.get_value(record, self)
           end
         end
       end
