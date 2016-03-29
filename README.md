@@ -54,7 +54,7 @@ require 'julia'
       end
 
       # include your own mixins
-      ActionView::Helpers::DateHelper
+      include ActionView::Helpers::DateHelper
 
       column 'age' do |c|
         time_ago_in_words c.dob
