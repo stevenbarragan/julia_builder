@@ -52,6 +52,13 @@ require 'julia'
       column 'Type' do |user|
         user.class.name
       end
+
+      # include your own mixins
+      ActionView::Helpers::DateHelper
+
+      column 'age' do |c|
+        time_ago_in_words c.dob
+      end
     end
     ```
 

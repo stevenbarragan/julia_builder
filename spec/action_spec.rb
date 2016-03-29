@@ -1,12 +1,20 @@
 require 'spec_helper'
 
 RSpec.describe Julia::Action do
+  class TestHost
+    def add_steven(string)
+      "#{ string } steven"
+    end
+  end
+
+  let(:host){ TestHost.new }
+
   let(:record) do
-    OpenStruct.new({
+    OpenStruct.new(
       name:      'steven',
       last_name: 'barragan',
       dob:       Date.new(1990, 11, 19)
-    })
+    )
   end
 
   describe '#get_value' do
@@ -14,7 +22,7 @@ RSpec.describe Julia::Action do
       let(:subject){ described_class.new(:name) }
 
       it 'returns key\'s value' do
-        expect(subject.get_value(record)).to eq 'steven'
+        expect(subject.get_value(record, host)).to eq "steven"
       end
     end
 
@@ -22,7 +30,7 @@ RSpec.describe Julia::Action do
       let(:subject){ described_class.new('Last name', :last_name) }
 
       it 'returns action\'s value' do
-        expect(subject.get_value(record)).to eq 'barragan'
+        expect(subject.get_value(record, host)).to eq "barragan"
       end
     end
 
@@ -34,7 +42,19 @@ RSpec.describe Julia::Action do
       end
 
       it 'returns block\'s value' do
-        expect(subject.get_value(record)).to eq 'barragan'
+        expect(subject.get_value(record, host)).to eq "barragan"
+      end
+
+      context "using and mixing" do
+        let(:subject) do
+          described_class.new(:name) do |user|
+            add_steven(user.last_name)
+          end
+        end
+
+        it "returns block's value using a metod from the mixing" do
+          expect(subject.get_value(record, host)).to eq "barragan steven"
+        end
       end
     end
 
@@ -42,7 +62,7 @@ RSpec.describe Julia::Action do
       let(:subject) { described_class.new('full name', -> { "#{name} #{last_name}" }) }
 
       it 'returns lambda\'s value' do
-        expect(subject.get_value(record)).to eq 'steven barragan'
+        expect(subject.get_value(record, host)).to eq "steven barragan"
       end
     end
   end
