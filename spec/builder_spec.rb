@@ -47,9 +47,17 @@ RSpec.describe Julia::Builder do
     let(:subject){ Test1.new(query, csv_options) }
 
     it 'pass csv options' do
-      expect(CSV).to receive(:generate).with csv_options
+      expect(CSV).to receive(:generate).with(
+        subject.default_options.merge(csv_options)
+      )
 
       subject.build
+    end
+
+    context 'with an option to not write headers' do
+      let(:subject){ Test3.new(query, write_headers: false) }
+
+      it { expect(subject.build).to eq "Steven Barragan\n" }
     end
   end
 

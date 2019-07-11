@@ -5,7 +5,14 @@ module Julia
     attr_reader :collection, :csv_options
 
     def initialize(collection, csv_options = Hash.new)
-      @collection, @csv_options = collection, csv_options
+      @collection, @csv_options = collection, default_options.merge(csv_options)
+    end
+
+    def default_options
+      {
+        headers: columns_config.keys,
+        write_headers: true
+      }
     end
 
     def self.column(keyname, action = nil, &block)
@@ -24,8 +31,6 @@ module Julia
 
     def build
       CSV.generate(csv_options) do |csv|
-        csv << columns_config.keys
-
         collection.each do |record|
           csv << columns_config.values.map do |action|
             action.get_value(record, self)
