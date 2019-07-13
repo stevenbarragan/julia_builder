@@ -69,8 +69,10 @@ require 'julia'
     UserCsv.build(users)
 
     # or
-
     UserCsv.build(users, <csv options>)
+
+    # e.g. no headers
+    UserCsv.build(users, write_headers: false)
     ```
 
     Csv options could be anything [CSV::new](http://ruby-doc.org/stdlib-2.0.0/libdoc/csv/rdoc/CSV.html#method-c-new) understands, but they are optional.

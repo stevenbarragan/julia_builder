@@ -1,5 +1,10 @@
 # Julia Builder changes
 
+0.2.1
+-----
+
+- Use csv's API to write headers
+
 0.2.0
 -----
 
