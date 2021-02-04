@@ -30,7 +30,7 @@ module Julia
     end
 
     def build
-      CSV.generate(csv_options) do |csv|
+      CSV.generate(**csv_options) do |csv|
         collection.each do |record|
           csv << columns_config.values.map do |action|
             action.get_value(record, self)
