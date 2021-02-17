@@ -1,5 +1,10 @@
 # Julia Builder changes
 
+0.2.2
+-----
+
+- Make it compatible for ruby 3.0.0
+
 0.2.1
 -----
 
