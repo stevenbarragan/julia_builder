@@ -3,7 +3,6 @@ rvm:
   - 2.2.2
   - 3.0.0
   - jruby
-before_install: gem install bundler
 addons:
   code_climate:
     repo_token: 27bd1448bf5f9392ee41342332293833dcf3d5a3e30db53c9e4aaea4ec743dca
